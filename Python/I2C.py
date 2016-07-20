@@ -21,7 +21,7 @@ class I2C(object):
   @staticmethod
   def getPiI2CBusNumber():
     # Gets the I2C bus number /dev/i2c#
-    return 1 if Adafruit_I2C.getPiRevision() > 1 else 0
+    return 1 if I2C.getPiRevision() > 1 else 0
 
   def __init__(self, address, busnum=-1, debug=False):
     self.address = address
@@ -29,7 +29,7 @@ class I2C(object):
     # Alternatively, you can hard-code the bus version below:
     # self.bus = smbus.SMBus(0); # Force I2C0 (early 256MB Pi's)
     # self.bus = smbus.SMBus(1); # Force I2C1 (512MB Pi's)
-    self.bus = smbus.SMBus(busnum if busnum >= 0 else Adafruit_I2C.getPiI2CBusNumber())
+    self.bus = smbus.SMBus(busnum if busnum >= 0 else I2C.getPiI2CBusNumber())
     self.debug = debug
 
   def reverseByteOrder(self, data):
