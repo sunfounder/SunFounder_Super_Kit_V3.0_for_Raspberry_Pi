@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
 	from time import sleep
 
-	accel = Adafruit_ADXL345()
+	accel = ADXL345()
 
 	print '[Accelerometer X, Y, Z]'
 	while True:
