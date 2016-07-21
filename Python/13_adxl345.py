@@ -67,14 +67,25 @@ class ADXL345(I2C):
 		return res
 
 
+def get_i2c_busnum():
+	import RPi.GPIO as GPIO
+	busnum_0_type = ['Pi 1 Model B']
+	busnum_1_type = ['Pi 3 Model B', 'Pi 2 Model B', 'Pi 1 Model B+']
+	pi_revision = GPIO.RPI_INFO['TYPE']
+	if pi_revision in busnum_0_type:
+		return 0
+	elif pi_revision in busnum_1_type:
+		return 1
+	else:
+		raise ValueError('Pi revision \"{0}\" is not in the list'.format(pi_revision))
+
 # Simple example prints accelerometer data once per second:
 if __name__ == '__main__':
-
 	from time import sleep
 
-	accel = ADXL345()
+	accel = ADXL345(busnum = get_i2c_busnum())
+	x, y, z = accel.read()
 
-	print '[Accelerometer X, Y, Z]'
 	while True:
-		print accel.read()
+		print 'X: %d, Y: %d, Z: %d'%(x, y, z)
 		sleep(1) # Output is fun to watch if this is commented out
