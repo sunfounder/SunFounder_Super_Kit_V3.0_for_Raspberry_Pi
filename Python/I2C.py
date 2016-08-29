@@ -5,24 +5,17 @@ import smbus
 class I2C(object):
 
   @staticmethod
-  def getPiRevision():
-    "Gets the version number of the Raspberry Pi board"
-    # Courtesy quick2wire-python-api
-    # https://github.com/quick2wire/quick2wire-python-api
-    # Updated revision info from: http://elinux.org/RPi_HardwareHistory#Board_Revision_History
-    try:
-      with open('/proc/cpuinfo','r') as f:
-        for line in f:
-          if line.startswith('Revision'):
-            return 1 if line.rstrip()[-1] in ['2','3'] else 2
-    except:
-      return 0
-
-  @staticmethod
   def getPiI2CBusNumber():
-    # Gets the I2C bus number /dev/i2c#
-    return 1 if I2C.getPiRevision() > 1 else 0
-
+    import RPi.GPIO as GPIO
+    busnum_0_type = ['Pi 1 Model B']
+    busnum_1_type = ['Pi 3 Model B', 'Pi 2 Model B', 'Pi 1 Model B+']
+    pi_revision = GPIO.RPI_INFO['TYPE']
+    if pi_revision in busnum_0_type:
+      return 0
+    elif pi_revision in busnum_1_type:
+      return 1
+    else:
+      raise ValueError('Pi revision \"{0}\" is not in the list'.format(pi_revision))
   def __init__(self, address, busnum=-1, debug=False):
     self.address = address
     # By default, the correct I2C bus is auto-detected using /proc/cpuinfo

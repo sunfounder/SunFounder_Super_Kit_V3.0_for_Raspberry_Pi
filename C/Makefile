@@ -2,7 +2,7 @@ DEBUG	= -O3
 CC	= gcc
 
 INCLUDE	= -I/usr/local/include
-CFLAGS	= $(DEBUG) -Wall $(INCLUDE) -Winline -pipe
+CFLAGS	= $(DEBUG) -w $(INCLUDE) -Winline -pipe
 LDFLAGS	= -L/usr/local/lib
 LDLIBS    = -lwiringPi -lwiringPiDev -lpthread -lm
 
@@ -14,14 +14,18 @@ SRC	=	01_blinkLed.c			\
 		04_breathLed.c			\
 		05_rgb.c				\
 		06_beep.c				\
-		07_motor.c				\
-		08_rotaryEncoder.c		\
-		09_74HC595_LED.c		\
-		10_segment.c            \
-		10_dice.c				\
-		11_dotMatrix.c 		    \
-		12_lcd1602.c			\
-		13_adxl345.c
+		07_relay.c				\
+		08_4N35.c				\
+		09_ne555.c				\
+		10_slideSwitch.c		\
+		11_motor.c				\
+		12_rotaryEncoder.c		\
+		13_74HC595_LED.c		\
+		14_segment.c            \
+		14_dice.c				\
+		15_dotMatrix.c 		    \
+		16_lcd1602.c			\
+		17_adxl345.c
 
 OBJ		=	$(SRC:.c=.o)
 BINS	=	$(SRC:.c=)
@@ -57,37 +61,49 @@ all:	$(BINS)
 	@echo [link]
 	@$(CC) -o $@ 06_beep.o $(LDFLAGS) $(LDLIBS)
 
-07_motor:	07_motor.o
+07_relay:	07_relay.o
 	@echo [link]
-	@$(CC) -o $@ 07_motor.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 07_relay.o $(LDFLAGS) $(LDLIBS)
 
-08_rotaryEncoder:	08_rotaryEncoder.o
+08_4N35:	08_4N35.o
 	@echo [link]
-	@$(CC) -o $@ 08_rotaryEncoder.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 08_4N35.o $(LDFLAGS) $(LDLIBS)
 
-09_74HC595_LED:	09_74HC595_LED.o
+09_slideSwitch:	09_slideSwitch.o
 	@echo [link]
-	@$(CC) -o $@ 09_74HC595_LED.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 09_slideSwitch.o $(LDFLAGS) $(LDLIBS)
 
-10_segment:	10_segment.o
+10_motor:	10_motor.o
 	@echo [link]
-	@$(CC) -o $@ 10_segment.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 10_motor.o $(LDFLAGS) $(LDLIBS)
 
-10_dice: 10_dice.o
+11_rotaryEncoder:	11_rotaryEncoder.o
 	@echo [link]
-	@$(CC) -o $@ 10_dice.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 11_rotaryEncoder.o $(LDFLAGS) $(LDLIBS)
 
-11_dotMatrix:	11_dotMatrix.o
+12_74HC595_LED:	12_74HC595_LED.o
 	@echo [link]
-	@$(CC) -o $@ 11_dotMatrix.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 12_74HC595_LED.o $(LDFLAGS) $(LDLIBS)
 
-12_lcd1602:	12_lcd1602.o
+13_segment:	13_segment.o
 	@echo [link]
-	@$(CC) -o $@ 12_lcd1602.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 13_segment.o $(LDFLAGS) $(LDLIBS)
 
-13_adxl345:	13_adxl345.o
+13_dice: 13_dice.o
 	@echo [link]
-	@$(CC) -o $@ 13_adxl345.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 13_dice.o $(LDFLAGS) $(LDLIBS)
+
+14_dotMatrix:	14_dotMatrix.o
+	@echo [link]
+	@$(CC) -o $@ 14_dotMatrix.o $(LDFLAGS) $(LDLIBS)
+
+15_lcd1602:	15_lcd1602.o
+	@echo [link]
+	@$(CC) -o $@ 15_lcd1602.o $(LDFLAGS) $(LDLIBS)
+
+16_adxl345:	16_adxl345.o
+	@echo [link]
+	@$(CC) -o $@ 16_adxl345.o $(LDFLAGS) $(LDLIBS)
 
 .c.o:
 	@echo [CC] $<
