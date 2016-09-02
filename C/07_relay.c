@@ -2,7 +2,7 @@
 * Filename 		: 4N35.c
 * Description 	: Make a relay to contral led blinking
 * Author 		: Dream
-* E-mail 		: service@sunfounder.com
+* E-mail 		: support@sunfounder.com
 * Website 		: www.sunfounder.com
 * Update 		: Dream    <2016-07-26>
 * Detail		: <update details>
