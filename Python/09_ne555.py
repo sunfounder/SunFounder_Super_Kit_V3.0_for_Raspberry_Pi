@@ -1,35 +1,31 @@
 
+#!/usr/bin/env python
 import RPi.GPIO as GPIO
-import time
 
-ne555 = 18
+# ne555 pin3 connect to BCM GPIO17
+SigPin = 17    # BCM 17
+
+g_count = 0
+
+def count(ev=None):
+	global g_count
+	g_count += 1
 
 def setup():
-	GPIO.setmode(GPIO.BCM)
-	GPIO.setup(ne555, GPIO.IN)
+	GPIO.setmode(GPIO.BCM)       # Numbers GPIOs by physical location
+	GPIO.setup(SigPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)    # Set Pin's mode is input, and pull up to high level(3.3V)
+	GPIO.add_event_detect(SigPin, GPIO.RISING, callback=count) # wait for rasing
 
-def main():
+def loop():
 	while True:
-		pulse_1 = 0
-		pulse_2 = 0
-		pulse_3 = 0
+		print 'g_count = %d' % g_count
 
-		while GPIO.input(ne555)==0:		# High value begin
-			pulse_1 = time.time()
-		while GPIO.input(ne555)==1:		# High value end and low value begin
-			pulse_2 = time.time()
-		while GPIO.input(ne555)==0:		# Low value end
-			pulse_3 = time.time()
+def destroy():
+	GPIO.cleanup()    # Release resource
 
-		pulse_wide = (pulse_2 - pulse_1)*1000	# High value long ms
-		cycle_long = (pulse_3 - pulse_1)*1000  # Pulse cycle long ms
-		duty_cycle = pulse_wide *100 / cycle_long 	# Duty cycle
-
-		print ("pulse_wide = %d ms, duty_cycle = %d %%"%(pulse_wide, duty_cycle))
-
-if __name__ == '__main__':
+if __name__ == '__main__':     # Program start from here
+	setup()
 	try:
-		setup()
-		main()
-	except KeyboardInterrupt:
-		GPIO.cleanup()
+		loop()
+	except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
+		destroy()
