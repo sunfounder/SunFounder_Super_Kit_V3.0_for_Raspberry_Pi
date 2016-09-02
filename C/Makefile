@@ -69,41 +69,45 @@ all:	$(BINS)
 	@echo [link]
 	@$(CC) -o $@ 08_4N35.o $(LDFLAGS) $(LDLIBS)
 
-09_slideSwitch:	09_slideSwitch.o
+09_ne555:	09_ne555.o
 	@echo [link]
-	@$(CC) -o $@ 09_slideSwitch.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 09_ne555.o $(LDFLAGS) $(LDLIBS)
 
-10_motor:	10_motor.o
+10_slideSwitch:	10_slideSwitch.o
 	@echo [link]
-	@$(CC) -o $@ 10_motor.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 10_slideSwitch.o $(LDFLAGS) $(LDLIBS)
 
-11_rotaryEncoder:	11_rotaryEncoder.o
+11_motor:	11_motor.o
 	@echo [link]
-	@$(CC) -o $@ 11_rotaryEncoder.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 11_motor.o $(LDFLAGS) $(LDLIBS)
 
-12_74HC595_LED:	12_74HC595_LED.o
+12_rotaryEncoder:	12_rotaryEncoder.o
 	@echo [link]
-	@$(CC) -o $@ 12_74HC595_LED.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 12_rotaryEncoder.o $(LDFLAGS) $(LDLIBS)
 
-13_segment:	13_segment.o
+13_74HC595_LED:	13_74HC595_LED.o
 	@echo [link]
-	@$(CC) -o $@ 13_segment.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 13_74HC595_LED.o $(LDFLAGS) $(LDLIBS)
 
-13_dice: 13_dice.o
+14_segment:	14_segment.o
 	@echo [link]
-	@$(CC) -o $@ 13_dice.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 14_segment.o $(LDFLAGS) $(LDLIBS)
 
-14_dotMatrix:	14_dotMatrix.o
+14_dice: 14_dice.o
 	@echo [link]
-	@$(CC) -o $@ 14_dotMatrix.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 14_dice.o $(LDFLAGS) $(LDLIBS)
 
-15_lcd1602:	15_lcd1602.o
+15_dotMatrix:	15_dotMatrix.o
 	@echo [link]
-	@$(CC) -o $@ 15_lcd1602.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 15_dotMatrix.o $(LDFLAGS) $(LDLIBS)
 
-16_adxl345:	16_adxl345.o
+16_lcd1602:	16_lcd1602.o
 	@echo [link]
-	@$(CC) -o $@ 16_adxl345.o $(LDFLAGS) $(LDLIBS)
+	@$(CC) -o $@ 16_lcd1602.o $(LDFLAGS) $(LDLIBS)
+
+17_adxl345:	17_adxl345.o
+	@echo [link]
+	@$(CC) -o $@ 17_adxl345.o $(LDFLAGS) $(LDLIBS)
 
 .c.o:
 	@echo [CC] $<
