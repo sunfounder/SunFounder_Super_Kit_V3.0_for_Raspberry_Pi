@@ -2,7 +2,7 @@
 * Filename 		: ne555.c
 * Description 	: Print pulse wide and duty cycle ic ne555 output
 * Author 		: Dream
-* E-mail 		: service@sunfounder.com
+* E-mail 		: support@sunfounder.com
 * Website 		: www.sunfounder.com
 * Update 		: Dream    <2016-07-26>
 * Detail		: <update details>
