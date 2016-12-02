@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import time
 
@@ -7,8 +8,18 @@ LedPin = 17
 
 # Define a function to print message at the beginning
 def print_message():
+	print ("========================================")
+	print ("|              Blink LED               |")
+	print ("|    ------------------------------    |")
+	print ("|         LED connect to GPIO0         |")
+	print ("|                                      |")
+	print ("|        LED will Blink at 500ms       |")
+	print ("|                                      |")
+	print ("|                            SunFounder|")
+	print ("========================================\n")
 	print 'Program is running...'
 	print 'Please press Ctrl+C to end the program...'
+	raw_input ("Press Enter to begin\n")
 
 # Define a setup function for some setup
 def setup():

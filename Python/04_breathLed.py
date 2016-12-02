@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import time
 
@@ -6,8 +7,18 @@ import time
 LedPin = 18
 
 def print_message():
+	print ("========================================")
+	print ("|              Breath LED              |")
+	print ("|    ------------------------------    |")
+	print ("|         LED connect to GPIO0         |")
+	print ("|                                      |")
+	print ("|            Make LED breath           |")
+	print ("|                                      |")
+	print ("|                            SunFounder|")
+	print ("========================================\n")
 	print 'Program is running...'
 	print 'Please press Ctrl+C to end the program...'
+	raw_input ("Press Enter to begin\n")
 
 def setup():
 	global pLed
@@ -34,12 +45,14 @@ def main():
 		for dc in range(0, 101, step):
 			# Change duty cycle to dc
 			pLed.ChangeDutyCycle(dc)
+			print " ++ Duty cycle: %s"%dc
 			time.sleep(delay)
 		time.sleep(1)
 		# decrease duty cycle from 100 to 0
 		for dc in range(100, -1, -step):
 			# Change duty cycle to dc
 			pLed.ChangeDutyCycle(dc)
+			print "  -- Duty cycle: %s"%dc
 			time.sleep(delay)
 		#time.sleep(1)
 

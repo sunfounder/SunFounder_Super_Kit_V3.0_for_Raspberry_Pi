@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import time
 
@@ -6,8 +7,18 @@ import time
 BeepPin = 17
 
 def print_message():
+	print ("========================================")
+	print ("|                 Beep                 |")
+	print ("|    ------------------------------    |")
+	print ("|        Buzzer connect to GPIO0       |")
+	print ("|                                      |")
+	print ("|            Make Buzzer beep          |")
+	print ("|                                      |")
+	print ("|                            SunFounder|")
+	print ("========================================\n")
 	print 'Program is running...'
 	print 'Please press Ctrl+C to end the program...'
+	raw_input ("Press Enter to begin\n")
 
 def setup():
 	# Set the GPIO modes to BCM Numbering

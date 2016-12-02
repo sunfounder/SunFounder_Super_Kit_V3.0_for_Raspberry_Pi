@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import time
 # Set #17 as LED pin
@@ -11,8 +12,19 @@ Led_status = True
 
 # Define a function to print message at the beginning
 def print_message():
+	print ("========================================")
+	print ("|          Button control LED          |")
+	print ("|    ------------------------------    |")
+	print ("|         LED connect to GPIO0         |")
+	print ("|        Button connect to GPIO1       |")
+	print ("|                                      |")
+	print ("|   Press button to turn on/off LED.   |")
+	print ("|                                      |")
+	print ("|                            SunFounder|")
+	print ("========================================\n")
 	print 'Program is running...'
 	print 'Please press Ctrl+C to end the program...'
+	raw_input ("Press Enter to begin\n")
 
 # Define a setup function for some setup
 def setup():

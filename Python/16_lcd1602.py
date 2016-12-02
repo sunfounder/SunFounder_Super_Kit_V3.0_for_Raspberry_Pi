@@ -55,6 +55,11 @@ class LCD:
 			self.pin_e = pin_e
 			self.pins_db = pins_db
 
+			self.used_gpio = self.pins_db[:]
+			self.used_gpio.append(pin_e)
+			self.used_gpio.append(pin_rs)
+
+			self.GPIO.setwarnings(False)
 			self.GPIO.setmode(GPIO.BCM)
 			self.GPIO.setup(self.pin_e, GPIO.OUT)
 			self.GPIO.setup(self.pin_rs, GPIO.OUT)
@@ -191,13 +196,40 @@ class LCD:
 
 	def message(self, text):
 		# Send string to LCD. Newline wraps to second line
+		print "message: %s"%text
 		for char in text:
 			if char == '\n':
 				self.write4bits(0xC0) # next line
 			else:
 				self.write4bits(ord(char),True)
+	
+	def destroy(self):
+		print "clean up used_gpio"
+		self.GPIO.cleanup(self.used_gpio)
+
+def print_msg():
+	print ("========================================")
+	print ("|                LCD1602               |")
+	print ("|    ------------------------------    |")
+	print ("|         D4 connect to BCM25          |")
+	print ("|         D5 connect to BCM24          |")
+	print ("|         D6 connect to BCM23          |")
+	print ("|         D7 connect to BCM18          |")
+	print ("|         RS connect to BCM27          |")
+	print ("|         CE connect to bcm22          |")
+	print ("|          RW connect to GND           |")
+	print ("|                                      |")
+	print ("|           Control LCD1602            |")
+	print ("|                                      |")
+	print ("|                            SunFounder|")
+	print ("========================================\n")
+	print 'Program is running...'
+	print 'Please press Ctrl+C to end the program...'
+	raw_input ("Press Enter to begin\n")
 
 def main():
+	global lcd
+	print_msg()
 	lcd = LCD()
 	line0 = "  sunfounder.com"
 	line1 = "---SUNFOUNDER---"
@@ -214,11 +246,16 @@ def main():
 			lcd.setCursor(i, 0)
 			lcd.message(line0[i])
 			sleep(0.1)
-                for i in range(0, len(line1)):
-                        lcd.setCursor(i, 1)
-                        lcd.message(line1[i])
-                        sleep(0.1)
+		for i in range(0, len(line1)):
+			lcd.setCursor(i, 1)
+			lcd.message(line1[i])
+			sleep(0.1)
 		sleep(1)
 
 if __name__ == '__main__':
-	main()
+	try:
+		main()
+	except KeyboardInterrupt:
+		lcd.clear()
+		lcd.destroy()
+	

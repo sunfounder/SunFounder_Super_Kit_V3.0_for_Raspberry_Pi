@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import time
 
@@ -11,8 +12,20 @@ relayPin = 17
 
 # Define a function to print message at the beginning
 def print_message():
+	print ("========================================")
+	print ("|                 Relay                |")
+	print ("|    ------------------------------    |")
+	print ("| GPIO0 connect to relay's control pin |")
+	print ("| led connect to relay's NormalOpen pin|")
+	print ("|  5v connect to relay's com pin       |")
+	print ("|                                      |")
+	print ("|      Make relay to contral a led     |")
+	print ("|                                      |")
+	print ("|                            SunFounder|")
+	print ("========================================\n")
 	print 'Program is running...'
 	print 'Please press Ctrl+C to end the program...'
+	raw_input ("Press Enter to begin\n")
 
 # Define a setup function for some setup
 def setup():

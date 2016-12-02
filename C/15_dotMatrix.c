@@ -68,7 +68,7 @@ int main(void){
 	printf("|         RCLK connect to GPIO1        |\n");
 	printf("|        SRCLK connect to GPIO 2       |\n");
 	printf("|                                      |\n");
-	printf("|     Control segment with 74HC595     |\n");
+	printf("|    Control Dot matrix with 74HC595   |\n");
 	printf("|                                      |\n");
 	printf("|                            SunFounder|\n");
 	printf("========================================\n");

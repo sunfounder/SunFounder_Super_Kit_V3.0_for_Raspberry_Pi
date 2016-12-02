@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import time
 
@@ -11,8 +12,22 @@ RoBPin = 18
 RoSPin = 27
 
 def print_message():
+	print ("========================================")
+	print ("|            Rotary Encoder            |")
+	print ("|    ------------------------------    |")
+	print ("|        Pin A connect to GPIO0        |")
+	print ("|        Pin B connect to GPIO1        |")
+	print ("|     Button Pin connect to GPIO 2     |")
+	print ("|                                      |")
+	print ("|         Use a Rotary Encoder         |")
+	print ("|     Rotary to add/minus counter      |")
+	print ("|      Press to set counter to 0       |")
+	print ("|                                      |")
+	print ("|                            SunFounder|")
+	print ("========================================\n")
 	print 'Program is running...'
 	print 'Please press Ctrl+C to end the program...'
+	raw_input ("Press Enter to begin\n")
 
 def setup():
 	global counter

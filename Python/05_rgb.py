@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import time
 
@@ -8,8 +9,20 @@ COLOR = [0xFF0000, 0x00FF00, 0x0000FF, 0xFFFF00, 0xFF00FF, 0x00FFFF]
 pins = {'Red':17, 'Green':18, 'Blue':27}
 
 def print_message():
+	print ("========================================")
+	print ("|              Breath LED              |")
+	print ("|    ------------------------------    |")
+	print ("|       Red Pin connect to GPIO0       |")
+	print ("|      Green Pin connect to GPIO1      |")
+	print ("|       Blue Pin connect to GPIO2      |")
+	print ("|                                      |")
+	print ("|  Make a RGB LED emits various color  |")
+	print ("|                                      |")
+	print ("|                            SunFounder|")
+	print ("========================================\n")
 	print 'Program is running...'
 	print 'Please press Ctrl+C to end the program...'
+	raw_input ("Press Enter to begin\n")
 
 def setup():
 	global p_R, p_G, p_B
@@ -54,6 +67,8 @@ def setColor(color):
 	p_R.ChangeDutyCycle(R_val)
 	p_G.ChangeDutyCycle(G_val)
 	p_B.ChangeDutyCycle(B_val)
+
+	print "color_msg: R_val = %s,	G_val = %s,	B_val = %s"%(R_val, G_val, B_val)	 
 
 def main():
 	print_message()

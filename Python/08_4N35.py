@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import time
 
@@ -7,8 +8,19 @@ Pin_4N35 = 17
 
 # Define a function to print message at the beginning
 def print_message():
+	print ("========================================")
+	print ("|                 4N35                 |")
+	print ("|    ------------------------------    |")
+	print ("|      LED connect to 4N35 pin5;       |")
+	print ("|      gpio0 connect to 4N35 pin2;     |")
+	print ("|                                      |")
+	print ("|     4N35 to contral led blinking.    |")
+	print ("|                                      |")
+	print ("|                            SunFounder|")
+	print ("========================================\n")
 	print 'Program is running...'
 	print 'Please press Ctrl+C to end the program...'
+	raw_input ("Press Enter to begin\n")
 
 # Define a setup function for some setup
 def setup():

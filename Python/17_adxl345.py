@@ -1,5 +1,7 @@
 #!/usr/bin/env python
+
 from I2C import I2C
+from time import sleep
 
 class ADXL345(I2C):
 
@@ -59,19 +61,44 @@ class ADXL345(I2C):
 	# Read the accelerometer
 	def read(self):
 		raw = self.accel.readList(self.ADXL345_REG_DATAX0, 6)
+		print raw
 		res = []
 		for i in range(0, 6, 2):
 			g = raw[i] | (raw[i+1] << 8)
-			if g > 32767: g -= 65536
+			if g > 32767: 
+				g -= 65535
 			res.append(g)
 		return res
 
-# Simple example prints accelerometer data once per second:
-if __name__ == '__main__':
-	from time import sleep
+def print_msg():
+	print ("========================================")
+	print ("|                ADXL345               |")
+	print ("|    ------------------------------    |")
+	print ("|          SCL connect to SCL          |")
+	print ("|          SDA connect to SDA          |")
+	print ("|                                      |")
+	print ("|        Read value from ADXL345       |")
+	print ("|                                      |")
+	print ("|                            SunFounder|")
+	print ("========================================\n")
+	print 'Program is running...'
+	print 'Please press Ctrl+C to end the program...'
+	raw_input ("Press anykey to begin\n")
 
+# Simple example prints accelerometer data once per second:
+def main():
 	accel = ADXL345()
 	while True:
 		x, y, z = accel.read()
 		print 'X: %d, Y: %d, Z: %d'%(x, y, z)
+		print ''
 		sleep(1) # Output is fun to watch if this is commented out
+
+def destroy():
+	exit()
+
+if __name__ == '__main__':
+	try:
+		main()
+	except KeyboardInterrupt:
+		destroy()
