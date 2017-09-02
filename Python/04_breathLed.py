@@ -3,14 +3,14 @@
 import RPi.GPIO as GPIO
 import time
 
-# Set #17 as LED pin
+# Set #18 as LED pin
 LedPin = 18
 
 def print_message():
 	print ("========================================")
 	print ("|              Breath LED              |")
 	print ("|    ------------------------------    |")
-	print ("|         LED connect to GPIO0         |")
+	print ("|         LED connect to GPIO1         |")
 	print ("|                                      |")
 	print ("|            Make LED breath           |")
 	print ("|                                      |")
