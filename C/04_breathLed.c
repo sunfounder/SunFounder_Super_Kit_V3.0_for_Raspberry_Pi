@@ -9,6 +9,7 @@
 
 #include <wiringPi.h>
 #include <stdio.h>
+#include <softPwm.h>
 
 #define LedPin    1
 
@@ -20,8 +21,7 @@ int main(void)
 		printf("setup wiringPi failed !");
 		return 1; 
 	}
-	
-	pinMode(LedPin, PWM_OUTPUT);//pwm output mode
+	softPwmCreate(LedPin, 0, 100);
 
 	printf("\n");
 	printf("\n");
@@ -39,15 +39,15 @@ int main(void)
 
 	while(1){
 		printf("Breath on\n");
-		for(i=0;i<1024;i++){
-			pwmWrite(LedPin, i);
-			delay(2);
+		for(i=0;i<=100;i++){
+			softPwmWrite(LedPin, i);
+			delay(20);
 		}
 		delay(1000);
 		printf("Breath off\n");
-		for(i=1023;i>=0;i--){
-			pwmWrite(LedPin, i);
-			delay(2);
+		for(i=100;i>=0;i--){
+			softPwmWrite(LedPin, i);
+			delay(20);
 		}
 	}
 
