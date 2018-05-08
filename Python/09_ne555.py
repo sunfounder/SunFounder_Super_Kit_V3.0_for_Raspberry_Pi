@@ -3,8 +3,8 @@
 import RPi.GPIO as GPIO
 import time
 
-# ne555 pin3 connect to BCM GPIO17
-SigPin = 17    # BCM 17
+# ne555 pin3 connect to BCM GPIO18
+SigPin = 18    # BCM 18
 
 g_count = 0
 
@@ -12,9 +12,9 @@ def print_msg():
 	print ("========================================");
 	print ("|                  Ne555               |");
 	print ("|    ------------------------------    |");
-	print ("| Output pin of ne555 connect to gpio0;|");
+	print ("| Output pin of ne555 connect to gpio1;|");
 	print ("|                                      |");
-	print ("|  Count the pluses procude by NE555.  |");
+	print ("|  Count the pulses procude by NE555.  |");
 	print ("|                                      |");
 	print ("|                            SunFounder|");
 	print ("========================================\n");
