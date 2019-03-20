@@ -83,7 +83,7 @@ def destroy():
 	p_G.stop()
 	p_B.stop()
 	# Turn off all LEDs
-	GPIO.output(pins, GPIO.HIGH)
+	GPIO.output(pins.values(), GPIO.HIGH)
 	# Release resource
 	GPIO.cleanup()
 
