@@ -5,7 +5,9 @@
 * E-mail 		: support@sunfounder.com
 * Website 		: www.sunfounder.com
 * Update 		: Dream    <2016-07-26>
+*                       : psvehla  <2019-04-26>
 * Detail		: <update details>
+*                       : Fixed hi-lo mixup.
 **********************************************************************/
 #include <wiringPi.h>
 #include <stdio.h>
@@ -39,11 +41,11 @@ int main(void){
 	while(1){
 		// Tick
 		printf("......Relay Close\n");
-		digitalWrite(RelayPin, LOW);
+		digitalWrite(RelayPin, HIGH);
 		delay(1000);
 		// Tock
 		printf("Relay Open......\n");
-		digitalWrite(RelayPin, HIGH);
+		digitalWrite(RelayPin, LOW);
 		delay(1000);
 	}
 
