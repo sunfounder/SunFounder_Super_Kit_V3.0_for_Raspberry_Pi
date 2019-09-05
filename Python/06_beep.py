@@ -1,7 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
+
 
 # Set #17 as buzzer pin
 BeepPin = 17
@@ -16,8 +21,8 @@ def print_message():
 	print ("|                                      |")
 	print ("|                            SunFounder|")
 	print ("========================================\n")
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
 
 def setup():
@@ -31,11 +36,11 @@ def main():
 	print_message()
 	while True:
 		# Buzzer on (Beep)
-		print 'Buzzer On'
+		print ("Buzzer On")
 		GPIO.output(BeepPin, GPIO.LOW)
 		time.sleep(0.1)
 		# Buzzer off
-		print 'Buzzer Off'
+		print ("Buzzer Off")
 		GPIO.output(BeepPin, GPIO.HIGH)
 		time.sleep(0.1)
 

@@ -1,7 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
+
 
 # ne555 pin3 connect to BCM GPIO18
 SigPin = 18    # BCM 18
@@ -18,8 +23,8 @@ def print_msg():
 	print ("|                                      |");
 	print ("|                            SunFounder|");
 	print ("========================================\n");
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
 
 def count(ev=None):
@@ -34,7 +39,7 @@ def setup():
 def main():
 	print_msg()
 	while True:
-		print 'g_count = %d' % g_count
+		print ("g_count = %d" % g_count)
 		time.sleep(0.001)
 
 def destroy():

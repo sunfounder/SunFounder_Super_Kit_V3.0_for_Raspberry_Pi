@@ -1,7 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
+
 
 # Set #17 as 4N35 pin
 Pin_4N35 = 17
@@ -18,8 +23,8 @@ def print_message():
 	print ("|                                      |")
 	print ("|                            SunFounder|")
 	print ("========================================\n")
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
 
 # Define a setup function for some setup
@@ -35,11 +40,11 @@ def main():
 	# Print messages
 	print_message()
 	while True:
-		print '...LED ON'
+		print ("...LED ON")
 		# Turn on LED
 		GPIO.output(Pin_4N35, GPIO.LOW)
 		time.sleep(0.5)
-		print 'LED OFF...'
+		print ("LED OFF...")
 		# Turn off LED
 		GPIO.output(Pin_4N35, GPIO.HIGH) 
 		time.sleep(0.5)

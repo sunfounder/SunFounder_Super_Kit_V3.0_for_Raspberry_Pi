@@ -1,16 +1,19 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import smbus
 
 class I2C(object):
 
-  RPI_REVISION_0 = ["900092"]
+  RPI_REVISION_0 = ["900092","900093", "920093",]
   RPI_REVISION_1_MODULE_B = ["Beta", "0002", "0003", "0004", "0005", "0006", "000d", "000e", "000f"]
   RPI_REVISION_1_MODULE_A = ["0007", "0008", "0009",]
-  RPI_REVISION_1_MODULE_BP = ["0010", "0013"]
-  RPI_REVISION_1_MODULE_AP = ["0012"]
-  RPI_REVISION_2 = ["a01041", "a21041"]
-  RPI_REVISION_3 = ["a02082", "a22082"]
+  RPI_REVISION_1_MODULE_BP = ["0010", "0013","900032"]
+  RPI_REVISION_1_MODULE_AP = ["0012","900021"]
+  RPI_REVISION_2 = ["a01041", "a21041","a22042"]
+  RPI_REVISION_3 = ["a02082", "a22082","a32082"]
+  RPI_REVISION_3_MODULE_BP = ["a020d3"]
+  RPI_REVISION_3_MODULE_AP = ["9020e0"]
+  RPI_REVISION_4 = ["a03111", "b03111", "c03111"]
 
   def _get_bus_number(self):
     "Gets the version number of the Raspberry Pi board"
@@ -35,9 +38,15 @@ class I2C(object):
             return 1
           elif line[11:-1] in self.RPI_REVISION_3:
             return 1
+          elif line[11:-1] in self.RPI_REVISION_3_MODULE_BP:
+            return 1
+          elif line[11:-1] in self.RPI_REVISION_3_MODULE_AP:
+            return 1
+          elif line[11:-1] in self.RPI_REVISION_4:
+            return 1
           else:
             return line[11:-1]
-    except Exception, e:
+    except Exception as e:
       f.close()
       return e
     finally:
@@ -53,7 +62,7 @@ class I2C(object):
       self.bus_number = self._get_bus_number()
     else:
       self.bus_number = bus_number
-    print self.bus_number
+    #print (self.bus_number)
     self.bus = smbus.SMBus(self.bus_number)
     self.debug = debug
 
@@ -68,7 +77,7 @@ class I2C(object):
     return val
 
   def errMsg(self):
-    print "Error accessing 0x%02X: Check your I2C address" % self.address
+    print ("Error accessing 0x%02X: Check your I2C address" % self.address)
     return -1
 
   def write8(self, reg, value):
@@ -76,8 +85,8 @@ class I2C(object):
     try:
       self.bus.write_byte_data(self.address, reg, value)
       if self.debug:
-        print "I2C: Wrote 0x%02X to register 0x%02X" % (value, reg)
-    except IOError, err:
+        print ("I2C: Wrote 0x%02X to register 0x%02X" % (value, reg))
+    except IOError as err:
       return self.errMsg()
 
   def write16(self, reg, value):
@@ -85,9 +94,8 @@ class I2C(object):
     try:
       self.bus.write_word_data(self.address, reg, value)
       if self.debug:
-        print ("I2C: Wrote 0x%02X to register pair 0x%02X,0x%02X" %
-         (value, reg, reg+1))
-    except IOError, err:
+        print ("I2C: Wrote 0x%02X to register pair 0x%02X,0x%02X" %(value, reg, reg+1))
+    except IOError as err:
       return self.errMsg()
 
   def writeRaw8(self, value):
@@ -95,30 +103,29 @@ class I2C(object):
     try:
       self.bus.write_byte(self.address, value)
       if self.debug:
-        print "I2C: Wrote 0x%02X" % value
-    except IOError, err:
+        print ("I2C: Wrote 0x%02X" % value)
+    except IOError as err:
       return self.errMsg()
 
   def writeList(self, reg, list):
     "Writes an array of bytes using I2C format"
     try:
       if self.debug:
-        print "I2C: Writing list to register 0x%02X:" % reg
-        print list
+        print ("I2C: Writing list to register 0x%02X:" % reg)
+        print (list)
       self.bus.write_i2c_block_data(self.address, reg, list)
-    except IOError, err:
+    except IOError as err:
       return self.errMsg()
 
   def readList(self, reg, length):
     "Read a list of bytes from the I2C device"
     try:
-      results = self.bus.read_i2c_block_data(self.address, reg, length)
+      results =self.bus.read_i2c_block_data(self.address, reg, length)
       if self.debug:
-        print ("I2C: Device 0x%02X returned the following from reg 0x%02X" %
-         (self.address, reg))
-        print results
+        print ("I2C: Device 0x%02X returned the following from reg 0x%02X" %(self.address, reg))
+        print (results)
       return results
-    except IOError, err:
+    except IOError as err:
       return self.errMsg()
 
   def readU8(self, reg):
@@ -126,10 +133,9 @@ class I2C(object):
     try:
       result = self.bus.read_byte_data(self.address, reg)
       if self.debug:
-        print ("I2C: Device 0x%02X returned 0x%02X from reg 0x%02X" %
-         (self.address, result & 0xFF, reg))
+        print ("I2C: Device 0x%02X returned 0x%02X from reg 0x%02X" %(self.address, result & 0xFF, reg))
       return result
-    except IOError, err:
+    except IOError as err:
       return self.errMsg()
 
   def readS8(self, reg):
@@ -138,10 +144,9 @@ class I2C(object):
       result = self.bus.read_byte_data(self.address, reg)
       if result > 127: result -= 256
       if self.debug:
-        print ("I2C: Device 0x%02X returned 0x%02X from reg 0x%02X" %
-         (self.address, result & 0xFF, reg))
+        print ("I2C: Device 0x%02X returned 0x%02X from reg 0x%02X" %(self.address, result & 0xFF, reg))
       return result
-    except IOError, err:
+    except IOError as err:
       return self.errMsg()
 
   def readU16(self, reg, little_endian=True):
@@ -153,9 +158,9 @@ class I2C(object):
       if not little_endian:
         result = ((result << 8) & 0xFF00) + (result >> 8)
       if (self.debug):
-        print "I2C: Device 0x%02X returned 0x%04X from reg 0x%02X" % (self.address, result & 0xFFFF, reg)
+        print ("I2C: Device 0x%02X returned 0x%04X from reg 0x%02X" % (self.address, result & 0xFFFF, reg))
       return result
-    except IOError, err:
+    except IOError as err:
       return self.errMsg()
 
   def readS16(self, reg, little_endian=True):
@@ -164,12 +169,12 @@ class I2C(object):
       result = self.readU16(reg,little_endian)
       if result > 32767: result -= 65536
       return result
-    except IOError, err:
+    except IOError as err:
       return self.errMsg()
 
 if __name__ == '__main__':
   try:
     bus = I2C(address = 0x53, debug = True)
-    print "Default I2C bus is accessible"
+    print ("Default I2C bus is accessible")
   except:
-    print "Error accessing default I2C bus"
+    print ("Error accessing default I2C bus")

@@ -1,7 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
 
 # Set #17 as slide switch pin, #18 as led1 pin, #27 as led2 pin
 slidePin = 17
@@ -20,8 +24,8 @@ def print_message():
 	print ("|                                      |")
 	print ("|                            SunFounder|")
 	print ("========================================\n")
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
 
 # Define a setup function for some setup
@@ -42,13 +46,13 @@ def main():
 	while True:
 		# slide switch high, led1 on
 		if GPIO.input(slidePin) == 1:
-			print 'LED1 ON (High Value)'
+			print ("   LED1 ON    ")
 			GPIO.output(led1Pin, GPIO.LOW)
 			GPIO.output(led2Pin, GPIO.HIGH)
 
 		# slide switch low, led2 on
 		if GPIO.input(slidePin) == 0:
-			print '    LED2 ON (Low Value)'
+			print ("   LED2 ON    ")
 			GPIO.output(led2Pin, GPIO.LOW)
 			GPIO.output(led1Pin, GPIO.HIGH)
 

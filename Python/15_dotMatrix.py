@@ -1,7 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
 
 SDI   = 17
 RCLK  = 18

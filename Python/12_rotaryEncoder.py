@@ -1,7 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
 
 # Set up pins
 # Rotary A Pin
@@ -25,8 +29,8 @@ def print_message():
 	print ("|                                      |")
 	print ("|                            SunFounder|")
 	print ("========================================\n")
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
 
 def setup():
@@ -62,7 +66,7 @@ def rotaryDeal():
 			counter = counter + 1
 		if (Last_RoB_Status == 1) and (Current_RoB_Status == 0):
 			counter = counter - 1
-		print 'counter = %d' % counter
+		print ("counter = %d" % counter)
 
 # Define a callback function on switch, to clean "counter"
 def clear(ev=None):

@@ -1,7 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
 
 # Set up pins
 MotorPin1   = 17
@@ -20,8 +24,8 @@ def print_message():
 	print ("|                                      |")
 	print ("|                            SunFounder|")
 	print ("========================================\n")
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
 
 def setup():
@@ -43,7 +47,7 @@ def motor(direction):
 		GPIO.output(MotorPin2, GPIO.LOW)
 		# Enable the motor
 		GPIO.output(MotorEnable, GPIO.HIGH)
-		print "Clockwise"
+		print ("Clockwise")
 	# Counterclockwise
 	if direction == -1:
 		# Set direction
@@ -51,12 +55,12 @@ def motor(direction):
 		GPIO.output(MotorPin2, GPIO.HIGH)
 		# Enable the motor
 		GPIO.output(MotorEnable, GPIO.HIGH)
-		print "Counterclockwise"
+		print ("Counterclockwise")
 	# Stop
 	if direction == 0:
 		# Disable the motor
 		GPIO.output(MotorEnable, GPIO.LOW)
-		print "Stop"
+		print ("Stop")
 
 def main():
 	print_message()

@@ -68,7 +68,7 @@ int main(void){
 
 	while(1){
 		for(i=0;i<17;i++){
-			printf("Print 0x%1X on Segment\n", i);
+			printf("Print %1X on Segment\n", i);
 			hc595_shift(SegCode[i]);
 			delay(500);
 		}
@@ -76,4 +76,3 @@ int main(void){
 
 	return 0;
 }
-

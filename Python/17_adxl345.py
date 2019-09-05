@@ -1,7 +1,11 @@
-#!/usr/bin/env python
-
+#!/usr/bin/env python3
 from I2C import I2C
 from time import sleep
+import RPi.GPIO as GPIO
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
 
 class ADXL345(I2C):
 
@@ -61,10 +65,11 @@ class ADXL345(I2C):
 	# Read the accelerometer
 	def read(self):
 		raw = self.accel.readList(self.ADXL345_REG_DATAX0, 6)
-		print raw
+		#print (raw)
 		res = []
 		for i in range(0, 6, 2):
 			g = raw[i] | (raw[i+1] << 8)
+			g = 65535 - g
 			if g > 32767: 
 				g -= 65535
 			res.append(g)
@@ -81,8 +86,8 @@ def print_msg():
 	print ("|                                      |")
 	print ("|                            SunFounder|")
 	print ("========================================\n")
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press anykey to begin\n")
 
 # Simple example prints accelerometer data once per second:
@@ -90,8 +95,7 @@ def main():
 	accel = ADXL345()
 	while True:
 		x, y, z = accel.read()
-		print 'X: %d, Y: %d, Z: %d'%(x, y, z)
-		print ''
+		print ("X: %d, Y: %d, Z: %d"%(x, y, z))
 		sleep(1) # Output is fun to watch if this is commented out
 
 def destroy():

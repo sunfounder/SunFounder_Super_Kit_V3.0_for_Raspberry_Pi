@@ -1,18 +1,11 @@
-#!/usr/bin/env python
-
-#================================================
-#
-#   This program is for SunFounder SuperKit for Rpi.
-#
-#   Extend use of 8 LED with 74HC595.
-#
-#   Change the  WhichLeds and sleeptime value under
-#   loop() function to change LED mode and speed.
-#
-#=================================================
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
 
 SDI   = 17
 RCLK  = 18
@@ -43,8 +36,8 @@ def print_message():
     print ("|                                      |")
     print ("|                            SunFounder|")
     print ("========================================\n")
-    print 'Program is running...'
-    print 'Please press Ctrl+C to end the program...'
+    print ("Program is running...")
+    print ("Please press Ctrl+C to end the program...")
     raw_input ("Press Enter to begin\n")
 
 def setup():
@@ -72,41 +65,41 @@ def main():
     leds = ['-', '-', '-', '-', '-', '-', '-', '-']
     while True:
         # Change LED status from mode
-        print "    mode"
+        print ("  mode  ")
         for onoff in mode:
             hc595_shift(onoff)
             leds[mode.index(onoff)] = 1    # Show which led is on
-            print leds
+            print (leds) 
             time.sleep(sleeptime)
             leds[mode.index(onoff)] = '-'  # Show the led is off
         
-        print "    blink"
+        print ("  blink  ")
         for onoff in BLINK:
             hc595_shift(onoff)
             if (onoff == 0x00):
                 leds = ['-'] * 8
             elif (onoff == 0xff):
                 leds = [1] * 8
-            print leds
+            print (leds)
             time.sleep(blink_sleeptime)
 
         # Change LED status from mode reverse
-        print "    reversed mode"
+        print ("  reversed mode  ")
         for onoff in reversed(mode):
             hc595_shift(onoff)
             leds[mode.index(onoff)] = 1    # Show which led is on
-            print leds
+            print (leds)
             time.sleep(sleeptime)
             leds[mode.index(onoff)] = '-'  # Show the led is off
 
-        print "    blink"
+        print ("  blink  ")
         for onoff in BLINK:
             hc595_shift(onoff)
             if (onoff == 0x00):
                 leds = ['-'] * 8
             elif (onoff == 0xff):
                 leds = [1] * 8
-            print leds
+            print (leds)
             time.sleep(blink_sleeptime)
 
 def destroy():

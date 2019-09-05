@@ -1,6 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
+import RPi.GPIO as GPIO
+from sys import version_info
 from time import sleep
+
+if version_info.major == 3:
+	raw_input = input
 
 class LCD:
 	# commands
@@ -196,7 +201,7 @@ class LCD:
 
 	def message(self, text):
 		# Send string to LCD. Newline wraps to second line
-		print "message: %s"%text
+		print ("message: %s"%text)
 		for char in text:
 			if char == '\n':
 				self.write4bits(0xC0) # next line
@@ -204,7 +209,7 @@ class LCD:
 				self.write4bits(ord(char),True)
 	
 	def destroy(self):
-		print "clean up used_gpio"
+		print ("clean up used_gpio")
 		self.GPIO.cleanup(self.used_gpio)
 
 def print_msg():
@@ -223,8 +228,8 @@ def print_msg():
 	print ("|                                      |")
 	print ("|                            SunFounder|")
 	print ("========================================\n")
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
 
 def main():

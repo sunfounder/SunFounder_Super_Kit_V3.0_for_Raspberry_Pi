@@ -1,7 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
 
 # Set up pins
 SDI   = 17
@@ -26,8 +30,8 @@ def print_msg():
 	print ("|                                      |")
 	print ("|                            SunFounder|")
 	print ("========================================\n")
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
 
 def setup():
@@ -53,7 +57,7 @@ def main():
 		# Shift the code one by one from segCode list
 		for code in segCode:
 			hc595_shift(code)
-			print "segCode[%s]: 0x%02X"%(segCode.index(code), code) # double digit to print 
+			print ("segCode[%s]: 0x%02X"%(segCode.index(code), code)) # double digit to print 
 			time.sleep(0.5)
 
 def destroy():

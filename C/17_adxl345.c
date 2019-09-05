@@ -57,9 +57,9 @@ struct acc_dat adxl345_read_xyz(int fd)
 	z0 = 0xff - wiringPiI2CReadReg8(fd, 0x36);
 	z1 = 0xff - wiringPiI2CReadReg8(fd, 0x37);
 
-	printf("  x0 = %d   ",x0);printf("x1 = %d  \n",x1);
-	printf("  y0 = %d   ",y0);printf("y1 = %d  \n",y1);
-	printf("  z0 = %d   ",z0);printf("z1 = %d  \n",z1);
+	//printf("  x0 = %d   ",x0);printf("x1 = %d  \n",x1);
+	//printf("  y0 = %d   ",y0);printf("y1 = %d  \n",y1);
+	//printf("  z0 = %d   ",z0);printf("z1 = %d  \n",z1);
 
 	acc_xyz.x = (int)(x1 << 8) + (int)x0;
 	acc_xyz.y = (int)(y1 << 8) + (int)y0;

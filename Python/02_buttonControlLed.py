@@ -1,7 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
+
 # Set #17 as LED pin
 LedPin = 17
 # Set #18 as button pin
@@ -22,8 +27,8 @@ def print_message():
 	print ("|                                      |")
 	print ("|                            SunFounder|")
 	print ("========================================\n")
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
 
 # Define a setup function for some setup
@@ -47,10 +52,10 @@ def swLed(ev=None):
 	Led_status = not Led_status
 	GPIO.output(LedPin, Led_status)
 	if Led_status:
-		print 'LED OFF...'
+		print ("LED OFF...")
 	else:
-		print '...LED ON'
-
+		print ("...LED ON")	
+		
 # Define a main function for main process
 def main():
 	# Print messages
@@ -63,17 +68,21 @@ def main():
 # the script finished 
 def destroy():
 	# Turn off LED
-	GPIO.output(LedPin, GPIO.HIGH)
+	# GPIO.output(LedPin, GPIO.HIGH)
 	# Release resource
 	GPIO.cleanup()
 
 # If run this script directly, do:
 if __name__ == '__main__':
+	destroy()
 	setup()
 	try:
 		main()
 	# When 'Ctrl+C' is pressed, the child program 
 	# destroy() will be  executed.
 	except KeyboardInterrupt:
+		destroy()
+	finally:
+		print("destroy")
 		destroy()
 

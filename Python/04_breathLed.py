@@ -1,7 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
+
 
 # Set #18 as LED pin
 LedPin = 18
@@ -16,8 +21,8 @@ def print_message():
 	print ("|                                      |")
 	print ("|                            SunFounder|")
 	print ("========================================\n")
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
 
 def setup():
@@ -45,14 +50,14 @@ def main():
 		for dc in range(0, 101, step):
 			# Change duty cycle to dc
 			pLed.ChangeDutyCycle(dc)
-			print " ++ Duty cycle: %s"%dc
+			print (" ++ Duty cycle: %s" %dc)
 			time.sleep(delay)
 		time.sleep(1)
 		# decrease duty cycle from 100 to 0
 		for dc in range(100, -1, -step):
 			# Change duty cycle to dc
 			pLed.ChangeDutyCycle(dc)
-			print "  -- Duty cycle: %s"%dc
+			print ("  -- Duty cycle: %s" %dc)
 			time.sleep(delay)
 		#time.sleep(1)
 

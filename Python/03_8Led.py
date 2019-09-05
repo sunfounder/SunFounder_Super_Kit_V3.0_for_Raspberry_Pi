@@ -1,7 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
+from sys import version_info
+
+if version_info.major == 3:
+	raw_input = input
+
 
 # Set 8 Pins for 8 LEDs.
 LedPins = [17, 18, 27, 22, 23, 24, 25, 4]
@@ -24,8 +29,8 @@ def print_message():
 	print ("|                                      |")
 	print ("|                            SunFounder|")
 	print ("========================================\n")
-	print 'Program is running...'
-	print 'Please press Ctrl+C to end the program...'
+	print ("Program is running...")
+	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
 
 # Define a setup function for some setup
@@ -44,23 +49,23 @@ def main():
 
 	while True:
 		# Turn LED on from left to right
-		print "From left to right."
+		print ("From left to right.")
 		for pin in LedPins:
 			#print pin
 			GPIO.output(pin, GPIO.LOW)
 			leds[LedPins.index(pin)] = 0	# Show which led is on
-			print leds
+			print (leds)
 			time.sleep(0.1)
 			GPIO.output(pin, GPIO.HIGH)
 			leds[LedPins.index(pin)] = '-'	# Show the led is off
 
 		# Turn LED off from right to left
-		print "From right to left."
+		print ("From right to left.")
 		for pin in reversed(LedPins):
 			#print pin
 			GPIO.output(pin, GPIO.LOW)
 			leds[LedPins.index(pin)] = 0	# Show which led is on
-			print leds
+			print (leds)
 			time.sleep(0.1)
 			GPIO.output(pin, GPIO.HIGH)
 			leds[LedPins.index(pin)] = '-'	# Show the led is off
