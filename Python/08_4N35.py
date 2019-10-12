@@ -17,14 +17,14 @@ def print_message():
 	print ("|                 4N35                 |")
 	print ("|    ------------------------------    |")
 	print ("|      LED connect to 4N35 pin5;       |")
-	print ("|      gpio0 connect to 4N35 pin2;     |")
+	print ("|      gpio17 connect to 4N35 pin2;    |")
 	print ("|                                      |")
 	print ("|     4N35 to contral led blinking.    |")
 	print ("|                                      |")
 	print ("|                            SunFounder|")
-	print ("========================================\n")
+	print ("======================================\n")
 	print ("Program is running...")
-	print ("Please press Ctrl+C to end the program...")
+	print ("Please press Ctrl+C to end the program..")
 	raw_input ("Press Enter to begin\n")
 
 # Define a setup function for some setup

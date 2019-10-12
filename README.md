@@ -1,6 +1,14 @@
-### SunFounder Super Kit C/Python Code for RaspberryPi Rev.2 Module B(Compatible for Rev.1 Module B/B+)
+### SunFounder Super Kit C/Python Code for RaspberryPi
 This is the C/Python code for SunFounder Super Kit.
 
+### 2019/10/12 updated
+Summery:
+
+- change the BOARD naming method to BCM
+- change 15_dotMatrix.py to 15_DotMatrix.py and fix bugs for python3
+- change 17_adxl345.py to 17_ADXL345.py
+- add in fritzing folder
+- add in the user manual for Raspberry Pi 4 Model B
 
 Copyright (C) 2016
 

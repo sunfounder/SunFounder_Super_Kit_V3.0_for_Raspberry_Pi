@@ -17,12 +17,12 @@ def print_msg():
 	print ("========================================");
 	print ("|                  Ne555               |");
 	print ("|    ------------------------------    |");
-	print ("| Output pin of ne555 connect to gpio1;|");
+	print ("| Output pin of ne555 connect to gpio18;|");
 	print ("|                                      |");
 	print ("|  Count the pulses procude by NE555.  |");
 	print ("|                                      |");
 	print ("|                            SunFounder|");
-	print ("========================================\n");
+	print ("======================================\n");
 	print ("Program is running...")
 	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")

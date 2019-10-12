@@ -21,28 +21,28 @@ def print_msg():
     print ("========================================")
     print ("|      Dot matrix with two 74HC595     |")
     print ("|    ------------------------------    |")
-    print ("|        SDI connect to GPIO 0         |")
-    print ("|        RCLK connect to GPIO 1        |")
-    print ("|        SRCLK connect to GPIO 2       |")
+    print ("|        SDI connect to GPIO17         |")
+    print ("|        RCLK connect to GPIO18        |")
+    print ("|        SRCLK connect to GPIO27       |")
     print ("|                                      |")
     print ("|   Control Dot matrix with 74HC595    |")
     print ("|                                      |")
     print ("|                            SunFounder|")
-    print ("========================================\n")
-    print 'Program is running...'
-    print 'Please press Ctrl+C to end the program...'
+    print ("========================================")
+    print ("Program is running...")
+    print ("Please press Ctrl+C to end the program...")
     raw_input ("Press Enter to begin\n")
 
 def print_matrix(matrix):
-    for i in xrange(0,len(matrix)):
-        print matrix[i]
+    for i in range(0,len(matrix)):
+        print (matrix[i])
 
 def get_matrix(row_buffer, col_buffer, max_row=8, max_col=8):
     matrix_msg = [[0 for i in range(max_row)] for i in range(max_col)]
     
-    print "row_buffer = 0x%02x , col_buffer = 0x%02x"%(row_buffer, col_buffer)
-    for row_num in xrange(0,8):         
-        for col_num in xrange(0,8):
+    print("row_buffer = 0x%02x , col_buffer = 0x%02x"%(row_buffer, col_buffer)) 
+    for row_num in range(0,8):         
+        for col_num in range(0,8):
             #print (row_num, col_num), '-->', (((row_buffer >> row_num) & 0x01), ((col_buffer >> col_num) & 0x01))
             if (((row_buffer >> row_num) & 0x01) - ((col_buffer >> col_num) & 0x01)):
                 matrix_msg[row_num][col_num] = 1

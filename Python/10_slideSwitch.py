@@ -18,7 +18,7 @@ def print_message():
 	print ("|              Slide Switch            |")
 	print ("|    ------------------------------    |")
 	print ("|      Middle pin of slide switch      |")
-	print ("|         connect to gpio0;            |")
+	print ("|         connect to gpio17;           |")
 	print ("|                                      |")
 	print ("|slide switch to contral which led on. |")
 	print ("|                                      |")

@@ -15,7 +15,7 @@ def print_message():
 	print ("========================================")
 	print ("|              Blink LED               |")
 	print ("|    ------------------------------    |")
-	print ("|         LED connect to GPIO0         |")
+	print ("|         LED connect to B17           |")
 	print ("|                                      |")
 	print ("|        LED will Blink at 500ms       |")
 	print ("|                                      |")

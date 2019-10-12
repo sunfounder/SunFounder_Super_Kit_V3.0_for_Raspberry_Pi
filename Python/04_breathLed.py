@@ -15,14 +15,14 @@ def print_message():
 	print ("========================================")
 	print ("|              Breath LED              |")
 	print ("|    ------------------------------    |")
-	print ("|         LED connect to GPIO1         |")
+	print ("|         LED connect to GPIO18        |")
 	print ("|                                      |")
 	print ("|            Make LED breath           |")
 	print ("|                                      |")
 	print ("|                            SunFounder|")
-	print ("========================================\n")
+	print ("======================================\n")
 	print ("Program is running...")
-	print ("Please press Ctrl+C to end the program...")
+	print ("Please press Ctrl+C to end the program..")
 	raw_input ("Press Enter to begin\n")
 
 def setup():
