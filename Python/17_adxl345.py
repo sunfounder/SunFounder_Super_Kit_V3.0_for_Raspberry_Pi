@@ -49,7 +49,7 @@ class ADXL345(I2C):
 		format = ((self.accel.readU8(self.ADXL345_REG_DATA_FORMAT) & ~0x0F) |
 		  range | 0x08)
 		# Write the register back to the IC
-		seld.accel.write8(self.ADXL345_REG_DATA_FORMAT, format)
+		self.accel.write8(self.ADXL345_REG_DATA_FORMAT, format)
 
 	def getRange(self):
 		return self.accel.readU8(self.ADXL345_REG_DATA_FORMAT) & 0x03
