@@ -1,17 +1,11 @@
-/**********************************************************************
-* Filename    : adxl345.c
-* Description : Use an adxl345
-* Author      : Robot
-* E-mail      : support@sunfounder.com
-* website     : www.sunfounder.com
-* Update      : Cavon    2016/07/01
-**********************************************************************/
 #include <wiringPiI2C.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <unistd.h>
 
 #define  DevAddr  0x53  //device address
+#define  SENSITIVITY 256.00  //the sensitivity at each axis is 256LSB/g in +-2g,10bit or full resolution 
 
 struct acc_dat{
 	int x;
@@ -21,7 +15,7 @@ struct acc_dat{
 
 void adxl345_init(int fd)
 {
-	wiringPiI2CWriteReg8(fd, 0x31, 0x0b);
+	wiringPiI2CWriteReg8(fd, 0x31, 0x0b); //set the range as +-16g & full resolution
 	wiringPiI2CWriteReg8(fd, 0x2d, 0x08);
 //	wiringPiI2CWriteReg8(fd, 0x2e, 0x00);
 	wiringPiI2CWriteReg8(fd, 0x1e, 0x00);
@@ -57,9 +51,9 @@ struct acc_dat adxl345_read_xyz(int fd)
 	z0 = 0xff - wiringPiI2CReadReg8(fd, 0x36);
 	z1 = 0xff - wiringPiI2CReadReg8(fd, 0x37);
 
-	//printf("  x0 = %d   ",x0);printf("x1 = %d  \n",x1);
-	//printf("  y0 = %d   ",y0);printf("y1 = %d  \n",y1);
-	//printf("  z0 = %d   ",z0);printf("z1 = %d  \n",z1);
+	// printf("  x0 = %d   ",x0);printf("x1 = %d  \n",x1);
+	// printf("  y0 = %d   ",y0);printf("y1 = %d  \n",y1);
+	// printf("  z0 = %d   ",z0);printf("z1 = %d  \n",z1);
 
 	acc_xyz.x = (int)(x1 << 8) + (int)x0;
 	acc_xyz.y = (int)(y1 << 8) + (int)y0;
@@ -71,7 +65,7 @@ struct acc_dat adxl345_read_xyz(int fd)
 	if(acc_xyz.y > 32767){
 		acc_xyz.y -= 65536;	    
 	}
-	if(acc_xyz.z > 32767){
+	if(acc_xyz.z >32767){
 	    acc_xyz.z -= 65536;	
 	}
 
@@ -91,28 +85,15 @@ int main(void)
 
 	adxl345_init(fd);
 
-	printf("\n");
-	printf("\n");
-	printf("========================================\n");
-	printf("|                ADXL345               |\n");
-	printf("|    ------------------------------    |\n");
-	printf("|          SCL connect to SCL          |\n");
-	printf("|          SDA connect to SDA          |\n");
-	printf("|                                      |\n");
-	printf("|        Read value from ADXL345       |\n");
-	printf("|                                      |\n");
-	printf("|                            SunFounder|\n");
-	printf("========================================\n");
-	printf("\n");
-	printf("\n");
-
 	while(1){
 		acc_xyz = adxl345_read_xyz(fd);
-		printf("x: %d  y: %d  z: %d\n", acc_xyz.x, acc_xyz.y, acc_xyz.z);
+        float x = acc_xyz.x/SENSITIVITY; 
+        float y = acc_xyz.y/SENSITIVITY;
+        float z = acc_xyz.z/SENSITIVITY;
+		printf("x: %.2f  y: %.2f  z: %.2f\n", x,y,z);
 		
-		delay(1000);
+		sleep(1);
 	}
 	
 	return 0;
 }
-
