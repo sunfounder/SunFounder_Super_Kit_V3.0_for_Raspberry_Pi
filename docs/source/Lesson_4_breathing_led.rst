@@ -95,6 +95,57 @@ For C Language Users:
     
     sudo ./04_breathLed
 
+**Code**
+
+.. code-block:: C
+
+    #include <wiringPi.h>
+    #include <stdio.h>
+    #include <softPwm.h>
+    
+    #define LedPin    1
+    
+    int main(void)
+    {
+        int i;
+    
+        if(wiringPiSetup() == -1){ //when initialize wiring failed, print messageto screen
+            printf("setup wiringPi failed !");
+            return 1; 
+        }
+        softPwmCreate(LedPin, 0, 100);
+    
+        printf("\n");
+        printf("\n");
+        printf("========================================\n");
+        printf("|              Breath LED              |\n");
+        printf("|    ------------------------------    |\n");
+        printf("|         LED connect to GPIO0         |\n");
+        printf("|                                      |\n");
+        printf("|            Make LED breath           |\n");
+        printf("|                                      |\n");
+        printf("|                            SunFounder|\n");
+        printf("========================================\n");
+        printf("\n");
+        printf("\n");
+    
+        while(1){
+            printf("Breath on\n");
+            for(i=0;i<=100;i++){
+                softPwmWrite(LedPin, i);
+                delay(20);
+            }
+            delay(1000);
+            printf("Breath off\n");
+            for(i=100;i>=0;i--){
+                softPwmWrite(LedPin, i);
+                delay(20);
+            }
+        }
+    
+        return 0;
+    }
+
 **Code Explanation**
 
 .. code-block:: C
@@ -137,6 +188,89 @@ For Python Users:
 .. code-block:: 
     
     sudo python3 04_breathLed.py
+
+**Code**
+
+.. code-block:: python
+
+    import RPi.GPIO as GPIO
+    import time
+    from sys import version_info
+    
+    if version_info.major == 3:
+        raw_input = input
+    
+    
+    # Set #18 as LED pin
+    LedPin = 18
+    
+    def print_message():
+        print ("========================================")
+        print ("|              Breath LED              |")
+        print ("|    ------------------------------    |")
+        print ("|         LED connect to GPIO18        |")
+        print ("|                                      |")
+        print ("|            Make LED breath           |")
+        print ("|                                      |")
+        print ("|                            SunFounder|")
+        print ("======================================\n")
+        print ("Program is running...")
+        print ("Please press Ctrl+C to end the program..")
+        raw_input ("Press Enter to begin\n")
+    
+    def setup():
+        global pLed
+        # Set the GPIO modes to BCM Numbering
+        GPIO.setmode(GPIO.BCM)
+        # Set LedPin's mode to output, 
+        # and initial level to low (0v)
+    
+    
+        GPIO.setup(LedPin, GPIO.OUT, initial=GPIO.LOW)
+        # Set pLed as pwm output and frequece to 1KHz
+        pLed = GPIO.PWM(LedPin, 1000)
+        # Set pLed begin with value 0
+        pLed.start(0)
+    
+    def main():
+        print_message()
+        # Set increase/decrease step
+        step =2 
+        # Set delay time.
+        delay = 0.05
+        while True:
+            # Increase duty cycle from 0 to 100
+            for dc in range(0, 101, step):
+                # Change duty cycle to dc
+                pLed.ChangeDutyCycle(dc)
+                print (" ++ Duty cycle: %s" %dc)
+                time.sleep(delay)
+            time.sleep(1)
+            # decrease duty cycle from 100 to 0
+            for dc in range(100, -1, -step):
+                # Change duty cycle to dc
+                pLed.ChangeDutyCycle(dc)
+                print ("  -- Duty cycle: %s" %dc)
+                time.sleep(delay)
+            #time.sleep(1)
+    
+    def destroy():
+        # Stop pLed
+        pLed.stop()
+        # Turn off LED
+        GPIO.output(LedPin, GPIO.HIGH)
+        # Release resource
+        GPIO.cleanup()
+    
+    # If run this script directly, do:
+    if __name__ == '__main__':
+        setup()
+        try:
+            main()
+        # When 'Ctrl+C' is pressed, the child program 
+        # destroy() will be  executed.
+        except KeyboardInterrupt:
+            destroy()
 
 **Code Explanation**
 

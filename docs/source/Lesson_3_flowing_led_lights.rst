@@ -108,6 +108,78 @@ For C Language Users:
 .. image:: media/image122.png
     :align: center
 
+**Code**
+
+.. code-block:: C
+
+    #include <wiringPi.h>
+    #include <stdio.h>
+    
+    // Turn LED(channel) on
+    void led_on(int channel){
+        digitalWrite(channel, LOW);
+    }
+    
+    // Turn LED(channel) off
+    void led_off(int channel){
+        digitalWrite(channel, HIGH);
+    }
+    
+    int main(void){
+        int i;
+    
+        // When initialize wiring failed, print messageto screen
+        if(wiringPiSetup() == -1){
+            printf("setup wiringPi failed !");
+            return 1; 
+        }
+        // Set 8 pins' modes to output
+        for(i=0;i<8;i++){       
+            pinMode(i, OUTPUT);
+        }
+    
+        printf("\n");
+        printf("\n");
+        printf("========================================\n");
+        printf("|                8 LEDs                |\n");
+        printf("|    ------------------------------    |\n");
+        printf("|         LED0 connect to GPIO0        |\n");
+        printf("|         LED1 connect to GPIO1        |\n");
+        printf("|         LED2 connect to GPIO2        |\n");
+        printf("|         LED3 connect to GPIO3        |\n");
+        printf("|         LED4 connect to GPIO4        |\n");
+        printf("|         LED5 connect to GPIO5        |\n");
+        printf("|         LED6 connect to GPIO6        |\n");
+        printf("|         LED7 connect to GPIO7        |\n");
+        printf("|                                      |\n");
+        printf("|            Flow LED effect           |\n");
+        printf("|                                      |\n");
+        printf("|                            SunFounder|\n");
+        printf("========================================\n");
+        printf("\n");
+        printf("\n");
+    
+        while(1){
+            // Turn LED on from left to right
+            printf("From left to right.\n");
+            for(i=0;i<8;i++){
+                led_on(i);
+                delay(100);
+                led_off(i);
+            }
+            // Turn LED off from right to left
+            printf("From right to left.\n");
+            for(i=8;i>=0;i--){
+                led_on(i);
+                delay(100);
+                led_off(i);
+            }
+        }
+    
+        return 0;
+    }
+    
+
 **Code Explanation**
 
 .. code-block:: C
@@ -172,6 +244,98 @@ For Python Users:
 .. code-block::
 
     sudo python3 03_8Led.py
+
+**Code**
+
+.. code-block:: python
+
+    import RPi.GPIO as GPIO
+    import time
+    from sys import version_info
+    
+    if version_info.major == 3:
+        raw_input = input
+    
+    
+    # Set 8 Pins for 8 LEDs.
+    LedPins = [17, 18, 27, 22, 23, 24, 25, 4]
+    
+    # Define a function to print message at the beginning
+    def print_message():
+        print ("========================================")
+        print ("|                8 LEDs                |")
+        print ("|    ------------------------------    |")
+        print ("|         LED0 connect to GPIO17        |")
+        print ("|         LED1 connect to GPIO18        |")
+        print ("|         LED2 connect to GPIO27       |")
+        print ("|         LED3 connect to GPIO22        |")
+        print ("|         LED4 connect to GPIO23        |")
+        print ("|         LED5 connect to GPIO24        |")
+        print ("|         LED6 connect to GPIO25        |")
+        print ("|         LED7 connect to GPIO4        |")
+        print ("|                                      |")
+        print ("|            Flow LED effect           |")
+        print ("|                                      |")
+        print ("|                            SunFounder|")
+        print ("========================================\n")
+        print ("Program is running...")
+        print ("Please press Ctrl+C to end the program...")
+        raw_input ("Press Enter to begin\n")
+    
+    # Define a setup function for some setup
+    def setup():
+        # Set the GPIO modes to BCM Numbering
+        GPIO.setmode(GPIO.BCM)
+        # Set all LedPin's mode to output, 
+        # and initial level to High(3.3v)
+        GPIO.setup(LedPins, GPIO.OUT, initial=GPIO.HIGH)
+    
+    # Define a main function for main process
+    def main():
+        # Print messages
+        print_message()
+        leds = ['-', '-', '-', '-', '-', '-', '-', '-']
+    
+        while True:
+            # Turn LED on from left to right
+            print ("From left to right.")
+            for pin in LedPins:
+                #print pin
+                GPIO.output(pin, GPIO.LOW)
+                leds[LedPins.index(pin)] = 0	# Show which led is on
+                print (leds)
+                time.sleep(0.1)
+                GPIO.output(pin, GPIO.HIGH)
+                leds[LedPins.index(pin)] = '-'	# Show the led is off
+    
+            # Turn LED off from right to left
+            print ("From right to left.")
+            for pin in reversed(LedPins):
+                #print pin
+                GPIO.output(pin, GPIO.LOW)
+                leds[LedPins.index(pin)] = 0	# Show which led is on
+                print (leds)
+                time.sleep(0.1)
+                GPIO.output(pin, GPIO.HIGH)
+                leds[LedPins.index(pin)] = '-'	# Show the led is off
+    
+    # Define a destroy function for clean up everything after
+    # the script finished 
+    def destroy():
+        # Turn off all LEDs
+        GPIO.output(LedPins, GPIO.HIGH)
+        # Release resource
+        GPIO.cleanup()
+    
+    # If run this script directly, do:
+    if __name__ == '__main__':
+        setup()
+        try:
+            main()
+        # When 'Ctrl+C' is pressed, the child program 
+        # destroy() will be  executed.
+        except KeyboardInterrupt:
+            destroy()
 
 **Code Explanation**
 

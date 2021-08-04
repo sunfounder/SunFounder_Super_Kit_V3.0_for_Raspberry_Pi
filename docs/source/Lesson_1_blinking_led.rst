@@ -118,7 +118,7 @@ convenient.
 .. note::
     
     The make command will compile according to the rules in the Makefile. 
-    Two files will be generated after compiling: “*.o” and an executable file.
+    Two files will be generated after compiling: \"\*.o\" and an executable file.
     
     We use makefile, in essence, is to write the compilation method of gcc 
     into the automated script. If you have written your own program in C 
@@ -155,6 +155,54 @@ running the code. Then type the following command to open it:
 
 .. image:: media/image105.png
     :align: center
+
+
+**Code**
+
+.. code-block:: C
+
+    #include <wiringPi.h>
+    #include <stdio.h>
+
+    #define LedPin		0
+
+    int main(void)
+    {
+        // When initialize wiring failed, print messageto screen
+        if(wiringPiSetup() == -1){
+            printf("setup wiringPi failed !");
+            return 1; 
+        }
+        
+        pinMode(LedPin, OUTPUT);
+
+        printf("\n");
+        printf("\n");
+        printf("========================================\n");
+        printf("|              Blink LED               |\n");
+        printf("|    ------------------------------    |\n");
+        printf("|         LED connect to GPIO0         |\n");
+        printf("|                                      |\n");
+        printf("|        LED will Blink at 500ms       |\n");
+        printf("|                                      |\n");
+        printf("|                            SunFounder|\n");
+        printf("========================================");
+        printf("\n");
+        printf("\n");
+        
+        while(1){
+            // LED on
+            digitalWrite(LedPin, LOW);
+            printf("...LED on\n");
+            delay(500);
+            // LED off
+            digitalWrite(LedPin, HIGH);
+            printf("LED off...\n");
+            delay(500);
+        }
+
+        return 0;
+    }
 
 **Code Explanation**
 
@@ -251,6 +299,77 @@ stop running the code. Then type the following command to open it:
 
 .. image:: media/image110.png
     :align: center
+
+    
+**Code**
+
+
+.. code-block:: python
+
+    import RPi.GPIO as GPIO
+    import time
+    from sys import version_info
+    
+    if version_info.major == 3:
+        raw_input = input
+    
+    # Set #17 as LED pin
+    LedPin = 17
+    
+    # Define a function to print message at the beginning
+    def print_message():
+        print ("========================================")
+        print ("|              Blink LED               |")
+        print ("|    ------------------------------    |")
+        print ("|         LED connect to B17           |")
+        print ("|                                      |")
+        print ("|        LED will Blink at 500ms       |")
+        print ("|                                      |")
+        print ("|                            SunFounder|")
+        print ("========================================\n")
+        print ("Program is running...")
+        print ("Please press Ctrl+C to end the program...")
+        raw_input ("Press Enter to begin\n")
+    
+    # Define a setup function for some setup
+    def setup():
+        # Set the GPIO modes to BCM Numbering
+        GPIO.setmode(GPIO.BCM)
+        # Set LedPin's mode to output, 
+        # and initial level to High(3.3v)
+        GPIO.setup(LedPin, GPIO.OUT, initial=GPIO.HIGH)
+    
+    # Define a main function for main process
+    def main():
+        # Print messages
+        print_message()
+        while True:
+            print ("...LED ON")
+            # Turn on LED
+            GPIO.output(LedPin, GPIO.LOW)
+            time.sleep(0.5)
+            print ("LED OFF...")
+            # Turn off LED
+            GPIO.output(LedPin, GPIO.HIGH) 
+            time.sleep(0.5)
+    
+    # Define a destroy function for clean up everything after
+    # the script finished 
+    def destroy():
+        # Turn off LED
+        GPIO.output(LedPin, GPIO.HIGH)
+        # Release resource
+        GPIO.cleanup()                     
+    
+    # If run this script directly, do:
+    if __name__ == '__main__':
+        setup()
+        try:
+            main()
+        # When 'Ctrl+C' is pressed, the child program 
+        # destroy() will be  executed.
+        except KeyboardInterrupt:
+            destroy()
 
 **Code Explanation**
 
