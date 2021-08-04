@@ -96,7 +96,9 @@ voltage of 3.3V and 5V, and you can connect either via a jumper cap
 included.
 
 .. image:: media/image167.png
+    :width: 500
     :align: center
+
 
 **Schematic Diagram:**
 

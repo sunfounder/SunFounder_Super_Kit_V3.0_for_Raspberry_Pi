@@ -86,7 +86,7 @@ Experimental Procedures
 For C Language Users:
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-   **Step 2:** Go to the folder of the code.
+**Step 2:** Go to the folder of the code.
 
 .. code-block::
     

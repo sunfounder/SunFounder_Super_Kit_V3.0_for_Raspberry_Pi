@@ -106,7 +106,7 @@ cut off and the buzzer will not make sounds
 
 .. image:: media/image140.png
     :align: center
-
+    :width: 400
 
 
 Experimental Procedures
