@@ -13,7 +13,7 @@ principle and code. Now get on the road!
 
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     components_List
     preparation/preparation
@@ -21,7 +21,7 @@ principle and code. Now get on the road!
     libraries
     download_the_code
     lessons
-    appendix
+    appendix/appendix
 
 Copyright Notice
 --------------------------

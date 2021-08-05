@@ -1,6 +1,10 @@
 Components List
 =================
 
+.. Note::
+
+    After unpacking, please check that the number of components is correct
+    and that all components are in good condition.
 
 +-----------------+-------------------+-----------------+----------------------------+
 | No.             | Name              | Quantity        | Component                  |
@@ -104,7 +108,3 @@ Components List
 | 44              | 40-Pin GPIO       | 1               |.. image:: media/image47.png|
 +-----------------+-------------------+-----------------+----------------------------+
 
-.. Note::
-
-    After unpacking, please check that the number of components is correct
-    and that all components are in good condition.

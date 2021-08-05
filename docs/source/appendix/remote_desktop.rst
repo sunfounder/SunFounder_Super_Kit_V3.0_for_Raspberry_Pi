@@ -19,18 +19,13 @@ disabled. You need to enable it in config.
 
 Input the following command:
 
-.. raw:: html
-
-   <run></run>
 
 .. code-block:: 
 
     sudo raspi-config
 
 .. image:: media/image287.png
-   :alt: IMG_280
-   :width: 6.27153in
-   :height: 2.08125in
+   :align: center
 
 **Step 2**
 
@@ -38,25 +33,21 @@ Choose **3** **Interfacing Options** by press the down arrow key on your
 keyboard, then press the **Enter** key.
 
 .. image:: media/image282.png
-   :width: 5.96944in
-   :height: 2.48819in
+   :align: center
 
 **Step 3**
 
 **P3 VNC**
 
 .. image:: media/image288.png
-   :width: 6.6875in
-   :height: 2.72917in
+   :align: center
 
 **Step 4**
 
 Select **Yes -> OK -> Finish** to exit the configuration.
 
 .. image:: media/image289.png
-   :alt: IMG_283
-   :width: 5.03125in
-   :height: 3.34583in
+   :align: center
 
 **Login to VNC**
 
@@ -66,48 +57,38 @@ You need to download and install the `VNC Viewer <https://www.realvnc.com/en/con
 
 **Step 2**
 
-Then select “\ **New connection**\ ”.
+Then select \"**New connection**\".
 
-   .. image:: media/image290.png
-      :alt: IMG_285
-      :width: 3.67708in
-      :height: 1.66667in
+.. image:: media/image290.png
+   :align: center
 
 **Step 3**
 
 Input IP address of Raspberry Pi and any **Name**.
 
 .. image:: media/image291.png
-   :alt: IMG_286
-   :width: 5in
-   :height: 5.61458in
+   :align: center
 
 **Step 4**
 
 Double click the **connection** just created:
 
 .. image:: media/image292.png
-   :alt: IMG_287
-   :width: 4.57292in
-   :height: 2.98958in
+   :align: center
 
 **Step 5**
 
 Enter Username (**pi**) and Password (**raspberry** by default).
 
 .. image:: media/image293.png
-   :alt: IMG_288
-   :width: 5.20833in
-   :height: 3.75in
+   :align: center
 
 **Step 6**
 
 Now you can see the desktop of the Raspberry Pi:
 
 .. image:: media/image294.png
-   :alt: IMG_289
-   :width: 6.39722in
-   :height: 4.32222in
+   :align: center
 
 That's the end of the VNC part.
 
@@ -128,9 +109,6 @@ Login to Raspberry Pi by using SSH.
 
 Input the following instructions to install XRDP.
 
-.. raw:: html
-
-   <run></run>
 
 .. code-block:: 
 
@@ -141,12 +119,10 @@ Input the following instructions to install XRDP.
 
 Later, the installation starts.
 
-Enter "Y", press key “Enter” to confirm.
+Enter \"Y\", press key \"Enter\" to confirm.
 
 .. image:: media/image295.png
-   :alt: 图片1
-   :width: 6.84931in
-   :height: 3.07153in
+   :align: center
 
 **Step 4**
 
@@ -164,34 +140,28 @@ difference between the two. The next example is Windows remote desktop.
 
 **Step 2**
 
-Type in“\ **mstsc**\ ” in Run (WIN+R) to open the Remote Desktop
+Type in \"**mstsc**\" in Run (WIN+R) to open the Remote Desktop
 Connection, and input the IP address of Raspberry Pi, then click on
-“Connect”.
+\"Connect\".
 
 .. image:: media/image296.png
-   :alt: IMG_291
-   :width: 6.4875in
-   :height: 2.77847in
+   :align: center
 
 **Step 3**
 
 Then the xrdp login page pops out. Please type in your username and
-password. After that, please click “OK”. At the first time you log in,
-your username is “pi” and the password is “raspberry”.
+password. After that, please click \"OK\". At the first time you log in,
+your username is \"pi\" and the password is \"raspberry\".
 
 .. image:: media/image297.png
-   :alt: IMG_292
-   :width: 3.65694in
-   :height: 4.49514in
+   :align: center
 
 **Step 4**
 
 Here, you successfully login to RPi by using the remote desktop.
 
 .. image:: media/image20.png
-   :alt: 2019-11-07-090413_1024x600_scrot
-   :width: 6.11944in
-   :height: 3.58611in
+   :align: center
 
 **Copyright Notice**
 
