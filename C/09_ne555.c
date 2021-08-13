@@ -51,7 +51,9 @@ int main (void)
   wiringPiISR(Pin0, INT_EDGE_FALLING, &exInt0_ISR);
   
    while(1){
-  	printf("Current pluse number is : %d, %d\n", globalCounter,digitalRead(Pin0));
+	   
+	   printf("Current pluse number is : %d, %d\n", globalCounter,digitalRead(Pin0));
+	   delay(100);
     }
 
   return 0;

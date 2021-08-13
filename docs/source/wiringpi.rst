@@ -10,6 +10,10 @@ wiringPi includes lots of GPIO commands which enable you to control all
 kinds of interfaces on Raspberry Pi. You can test whether the wiringPi
 library is installed successfully or not by the following instructions.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
     gpio -v
@@ -18,6 +22,10 @@ library is installed successfully or not by the following instructions.
 
 If the message above appears, the wiringPi is installed successfully.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
     gpio readall
@@ -25,4 +33,4 @@ If the message above appears, the wiringPi is installed successfully.
 .. image:: media/image97.png
 
 For more details about wiringPi, you can refer to:
-http://wiringpi.com/download-and-install/
+http://wiringpi.com/download-and-install/.

@@ -69,9 +69,13 @@ For C Language Users:
 
 **Step 3:** Open the code file.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
-    cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
+    cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
 
 .. note::
     
@@ -79,12 +83,20 @@ For C Language Users:
 
 **Step 4:** Compile the Code.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
     gcc 03_8Led.c -o 03_8Led -lwiringPi
 
 **or**
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
     make 03_8Led
@@ -97,6 +109,10 @@ For C Language Users:
 
 **Step 5:** Run the executable file above.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
     sudo ./03_8Led
@@ -104,6 +120,8 @@ For C Language Users:
 .. note::
     
     Here the Raspberry Pi will run the executable file *03_8Led* compiled previously.
+
+    If it does not work after running, please refer to :ref:`C code is not working?`
 
 .. image:: media/image122.png
     :align: center
@@ -235,18 +253,30 @@ For Python Users:
 
 **Step 3:** Open the code file.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
-    cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
+    cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
 
 **Step 4:** Run.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
     sudo python3 03_8Led.py
 
 **Code**
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block:: python
 
     import RPi.GPIO as GPIO

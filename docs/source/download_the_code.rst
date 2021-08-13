@@ -9,9 +9,13 @@ Log into Raspberry Pi’s console, just as previously shown.
 
 Change directory to */home/pi*.
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block::
 
-    cd/home/pi/
+    cd /home/pi/
 
 .. Note::
 
@@ -19,6 +23,10 @@ Change directory to */home/pi*.
 
 Clone the repository from GitHub.
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block::
 
     git clone https://github.com/sunfounder/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi.git

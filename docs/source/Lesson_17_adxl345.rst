@@ -106,22 +106,38 @@ For C Language Users:
 
 **Step 2:** Get into the folder of code.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
-    cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
+    cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
 
 **Step 3:** Compile the Code.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
     make 17_adxl345
 
 **Step 4:** Run.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
     sudo ./17_adxl345
 
+
+.. note::
+   
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -335,18 +351,30 @@ For Python Users:
 
 **Step 2:** Get into the folder of the code.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
-    cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
+    cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
 
 **Step 3:** Run.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
-    sudo python3 17_ADXL345.py
+    sudo python3 17_adxl345.py
 
 **Code**
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block:: python
 
     from I2C import I2C

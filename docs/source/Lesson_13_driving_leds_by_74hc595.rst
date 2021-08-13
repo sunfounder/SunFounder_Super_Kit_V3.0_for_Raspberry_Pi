@@ -104,22 +104,37 @@ For C Language Users:
 
 **Step 2:** Get into the folder of the code.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
-    cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
+    cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
 
 **Step 3**: Compile.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
     make 13_74HC595_LED
 
 **Step 4**: Run the executable file above.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
     sudo ./13_74HC595_LED
 
+.. note::
+   
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -294,21 +309,29 @@ For Python Users:
 
 **Step 2:** Get into the folder of the code.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
-    cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
+    cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
 
 **Step 3**: Run.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
     sudo python3 13_74HC595_LED.py
 
-
-
-
-
 **Code**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

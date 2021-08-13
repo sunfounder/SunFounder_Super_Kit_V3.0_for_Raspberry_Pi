@@ -80,9 +80,13 @@ For C Language Users:
 
 **Step 2:** Open the code file:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
-    cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
+    cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
 
 .. note::
     
@@ -90,11 +94,21 @@ For C Language Users:
 
 **Step 3:** Compile the Code.
 
+
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     gcc 02_buttonControlLed.c -o 02_buttonControlLed -lwiringPi
 
 **or**
+
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -102,12 +116,26 @@ For C Language Users:
 
 **Step 4:** Run the executable file above.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo ./02_buttonControlLed
 
+
+.. note::
+
+    If it does not work after running, please refer to :ref:`C code is not working?`
+
+
 **Step 5:** Check the code.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
 
     nano 02_buttonControlLed.c
@@ -158,11 +186,13 @@ For C Language Users:
                 // Led on
                 digitalWrite(LedPin, LOW);
                 printf("...LED on\n");
+                delay(100);
             }
             else{
                 // Led off
                 digitalWrite(LedPin, HIGH);
                 printf("LED off...\n");
+                delay(100);
             }
         }
         return 0;
@@ -205,7 +235,7 @@ For C Language Users:
             digitalWrite(LedPin, LOW);
 
             printf("...LED on\n");
-
+            delay(100);
         }
 
         else
@@ -217,7 +247,7 @@ For C Language Users:
             digitalWrite(LedPin, HIGH);
 
             printf("LED off...\n");
-
+            delay(100);
         }
 
     /* digitalWrite (LedPin, HIGH) in while: close the LED. if (digitalRead(ButtonPin) == 0: 
@@ -235,24 +265,40 @@ For Python Users:
 
 **Step 2:** Open the code file.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
     
-    cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
+    cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
 
 **Step 3:** Run the code.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
     
     sudo python3 02_buttonControlLed.py
 
 **Step 4:** Check the code.
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block::
     
     nano 02_buttonControlLed.py
 
 **Code**
 
+.. raw:: html
+
+    <run></run>
+    
 .. code-block:: python
 
     import RPi.GPIO as GPIO

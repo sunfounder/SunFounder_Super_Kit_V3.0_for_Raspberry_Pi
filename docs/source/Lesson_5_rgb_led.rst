@@ -60,21 +60,37 @@ For C Language Users:
 
 **Step 2:** Open the code file.
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block::
     
-    cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
+    cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
 
 **Step 3:** Compile the Code.
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block::
     
     make 05_rgb
 
 **Step 4:** Run the executable file above.
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block::
     
     sudo ./05_rgb
+
+.. note::
+
+    If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -198,18 +214,30 @@ For Python Users:
 
 **Step 2:** Open the code file.
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block:: 
     
-    cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
+    cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
 
 **Step 3:** Run.
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block:: 
     
     sudo python3 05_rgb.py
     
 **Code**
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block:: python
 
     import RPi.GPIO as GPIO

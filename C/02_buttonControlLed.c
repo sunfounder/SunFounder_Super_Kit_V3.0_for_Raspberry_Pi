@@ -48,11 +48,13 @@ int main(void){
 			// Led on
 			digitalWrite(LedPin, LOW);
 			printf("...LED on\n");
+			delay(100);
 		}
 		else{
 			// Led off
 			digitalWrite(LedPin, HIGH);
 			printf("LED off...\n");
+			delay(100);
 		}
 	}
 	return 0;

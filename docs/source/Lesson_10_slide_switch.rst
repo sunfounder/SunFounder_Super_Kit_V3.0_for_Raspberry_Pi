@@ -80,22 +80,38 @@ For C Language Users:
 
 **Step 2**: Go to the folder of the code.
 
+.. raw:: html
+
+   <run></run>
+   
 .. code-block::
 
-   cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
+   cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
 
 **Step 3:** Compile.
 
+.. raw:: html
+
+   <run></run>
+   
 .. code-block::
 
    make 10_slideSwitch
 
 **Step 4:** Run the executable file above.
 
+.. raw:: html
+
+   <run></run>
+   
 .. code-block::
 
    sudo ./10_slideSwitch
 
+
+.. note::
+   
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -141,12 +157,14 @@ For C Language Users:
             digitalWrite(led1, LOW);
             digitalWrite(led2, HIGH);
             printf("LED1 on\n");
+            delay(100);
          }
          // slide switch low, led2 on
          if(digitalRead(slidePin) == 0){
             digitalWrite(led2, LOW);
             digitalWrite(led1, HIGH);
             printf(".....LED2 on\n");
+            delay(100);
          }
       }
    
@@ -169,6 +187,7 @@ For C Language Users:
       digitalWrite(led2, HIGH);
 
       printf("LED1 on\n");
+      delay(100);
 
    }
 
@@ -184,6 +203,7 @@ For C Language Users:
       digitalWrite(led1, HIGH);
 
       printf(".....LED2 on\n");
+      delay(100);
 
    }
 
@@ -192,12 +212,20 @@ For Python Users:
 
 **Step 2:** Get into the folder of the code.
 
+.. raw:: html
+
+   <run></run>
+   
 .. code-block::
 
-   cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
+   cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
 
 **Step 3:** Run.
 
+.. raw:: html
+
+   <run></run>
+   
 .. code-block::
 
    sudo python3 10_slideSwitch.py
@@ -205,6 +233,10 @@ For Python Users:
 
 **Code**
 
+.. raw:: html
+
+   <run></run>
+   
 .. code-block:: python
 
    import RPi.GPIO as GPIO

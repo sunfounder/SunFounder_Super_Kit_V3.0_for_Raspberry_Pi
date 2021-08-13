@@ -78,6 +78,10 @@ using display, and then use cd command directly to go to the code path.
 **If you log into the Raspberry Pi remotely, use “cd” to change
 directory:**
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block::
     
     cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/C
@@ -94,7 +98,11 @@ under the two methods are the same. Let's move on.
 
 **Step 3:** Compile the Code.
 
-.. code:: 
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
 
     gcc 01_blinkLed.c -o 01_blinkLed -lwiringPi
 
@@ -111,6 +119,10 @@ Since the gcc command is too long, you can use make to test the
 experimental effect of the kit to make the process quicker and more
 convenient.
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block::
 
     make 01_blinkLed
@@ -128,6 +140,10 @@ convenient.
 
 **Step 4:** Run the executable file output in the previous step:
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block::
 
     sudo ./01_blinkLed
@@ -140,12 +156,18 @@ convenient.
     command “./” indicates the current directory. The whole command is to 
     run the *01_blinkLed* in the current directory.
 
+    If it does not work after running, please refer to :ref:`C code is not working?`
+
 .. image:: media/image104.png
     :align: center
 
 If you want to view the code *01_blinkLed.c*, press **Ctrl + C** to stop
 running the code. Then type the following command to open it:
 
+.. raw:: html
+
+    <run></run>
+ 
 .. code-block::
 
     nano 01_blinkLed.c
@@ -269,11 +291,20 @@ Then you can see the results.
 **If you want to log into the Raspberry Pi remotely, type in the
 command:**
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
-    cd/home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
+    cd /home/pi/SunFounder_Super_Kit_V3.0_for_Raspberry_Pi/Python
 
 Run the code:
+
+.. raw:: html
+
+    <run></run>
+
 
 .. code-block::
 
@@ -289,6 +320,11 @@ Run the code:
 If you want to view the code *01_blinkLed.py*, press **Ctrl + C** to
 stop running the code. Then type the following command to open it:
 
+.. raw:: html
+
+    <run></run>
+
+
 .. code-block::
 
     nano 01_blinkLed.py
@@ -303,6 +339,9 @@ stop running the code. Then type the following command to open it:
     
 **Code**
 
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 
