@@ -23,6 +23,7 @@ principle and code. Now get on the road!
     lessons
     appendix/appendix
     faq
+    thank-learning
 
 Copyright Notice
 --------------------------

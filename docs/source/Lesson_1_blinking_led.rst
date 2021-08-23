@@ -368,7 +368,7 @@ stop running the code. Then type the following command to open it:
         print ("========================================\n")
         print ("Program is running...")
         print ("Please press Ctrl+C to end the program...")
-        raw_input ("Press Enter to begin\n")
+        #raw_input ("Press Enter to begin\n")
     
     # Define a setup function for some setup
     def setup():

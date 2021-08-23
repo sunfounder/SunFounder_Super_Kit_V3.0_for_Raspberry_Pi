@@ -259,7 +259,7 @@ For Python Users:
         print ("======================================\n");
         print ("Program is running...")
         print ("Please press Ctrl+C to end the program...")
-        raw_input ("Press Enter to begin\n")
+        #raw_input ("Press Enter to begin\n")
     
     def count(ev=None):
         global g_count

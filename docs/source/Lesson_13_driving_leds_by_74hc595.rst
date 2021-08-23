@@ -374,7 +374,7 @@ For Python Users:
         print ("========================================")
         print ("Program is running...")
         print ("Please press Ctrl+C to end the program..")
-        raw_input ("Press Enter to begin\n")
+        #raw_input ("Press Enter to begin\n")
     
     def setup():
         GPIO.setmode(GPIO.BCM)    # Number GPIOs by its BCM location

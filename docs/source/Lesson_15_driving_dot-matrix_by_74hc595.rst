@@ -409,7 +409,7 @@ For Python Users:
         print ("========================================")
         print ("Program is running...")
         print ("Please press Ctrl+C to end the program...")
-        raw_input ("Press Enter to begin\n")
+        #raw_input ("Press Enter to begin\n")
     
     def print_matrix(matrix):
         for i in range(0,len(matrix)):
