@@ -101,7 +101,7 @@ If there is an I2C device connected, the address of the device will be displayed
 
     sudo apt-get install libi2c-dev 
 
-**For Python users:** Install smbus for I2C.
+**For Python users:** Install smbus2 for I2C.
 
 .. raw:: html
 
@@ -109,4 +109,4 @@ If there is an I2C device connected, the address of the device will be displayed
  
 .. code-block:: 
 
-    sudo apt-get install python-smbus
+    sudo pip3 install smbus2
