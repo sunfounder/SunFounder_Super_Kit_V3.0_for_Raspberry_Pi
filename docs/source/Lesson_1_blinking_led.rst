@@ -156,7 +156,7 @@ convenient.
     command “./” indicates the current directory. The whole command is to 
     run the *01_blinkLed* in the current directory.
 
-    If it does not work after running, please refer to :ref:`C code is not working?`
+    If it does not work after running, or there is an error prompt: \"wiringPi.h: No such file or directory\", please refer to :ref:`C code is not working?`.
 
 .. image:: media/image104.png
     :align: center
