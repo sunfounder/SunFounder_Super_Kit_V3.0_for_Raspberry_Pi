@@ -19,7 +19,7 @@
 import sphinx_rtd_theme
 
 project = 'SunFounder Super_Kit_V3.0_for_Raspberry_Pi'
-copyright = '2021, SunFounder'
+copyright = '2022, SunFounder'
 author = 'www.sunfounder.com'
 
 
