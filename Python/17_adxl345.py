@@ -34,7 +34,7 @@ class ADXL345(I2C):
     ADXL345_RANGE_16_G       = 0x03 # +/- 16g
     ADXL345_SENSITIVITY      = 256.00 # 256LSB/g in full resolution
 
-    def __init__(self, busnum=-1, debug=False):
+    def __init__(self, busnum=1, debug=False):
         self.accel = I2C(self.ADXL345_ADDRESS, busnum, debug)
         if self.accel.readU8(self.ADXL345_REG_DEVID) == 0xE5:
             # Enable the accelerometer
